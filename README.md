@@ -33,7 +33,7 @@ Once you have a base folder and file path established, follow the steps below to
 
 * The a_to_z sheet shows all the records where the OCLC Control Number (035a) is different than the OCLC Control Number (035z) 
 
-    * Review for instances where there are multiple 035z in the record (filter using contains”;”). These need to be manually removed from the list one of the OCLC Control Number (035z) match the OCLC Control Number (035a). 
+    * Review for instances where there are multiple 035z in the record (filter using contains”;”). To avoid duplication in the 035z, these need to be manually removed from the a_to_z sheet if one of the OCLC Control Number (035z) match the OCLC Control Number (035a). 
 
 * The no_a_to_z sheet shows all the records where the incoming 035 $a is the same as the existing OCLC Control Number (035z)
    * Review these records using Connexion. They may indicate a false match in OCLC's algorithm and be records that need no changes made. If this is the case, remove them from the 'DIFF' sheet before moving on to step4.
