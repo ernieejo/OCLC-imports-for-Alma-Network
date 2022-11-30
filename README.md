@@ -25,6 +25,8 @@ Once you have a base folder and file path established, follow the steps below to
 
 <b>Step3.</b> 
 
+* Run Script2.
+
 * Review DIFF, a_to_z, and no_a_to_z sheets in the file "comparison_fileNZ" that was produced by the scripts. 
 
 * The ‘DIFF’ sheet shows all records where the OCLC Control Number (035a) is different than the 035 $a 
