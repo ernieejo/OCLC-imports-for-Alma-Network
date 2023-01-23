@@ -3,11 +3,13 @@ OCLC BIB processing report – Script Instructions
 
 Use these scripts to prepare spreadsheets that can be reviewed to create files for updating and maintaining OCLC numbers in Alma. Prior to running these scripts, some one-time setup is needed.  
 
-* You need to create a base folder where the scripts and the files they create will be stored.  
+* You need to create a base folder where the scripts and the files they create will be stored.
+
+* Add a blank Excel file called "Do_not_change.xlsx" to the base folder. In reviewing the OCLC numbers, there are situations where its best to ignore certain records. The do not change file can be used to list MMS IDs for records that you want the script to ignore.
 
 * You need to change the file paths within Script 1 and Script 2 so that they point to the folder you’ve created. Leave the file name that they point to within that folder as is.  
 
-* Create an Alma Analytics with the following subjects in this order: MMS ID, OCLC Control Number (035a), OCLC Control Number (035z), Network ID 
+* Create an Alma Analytics with the following subjects in this order: MMS ID, OCLC Control Number (035a), OCLC Control Number (035z), Network ID. Save the Analytic as "OCLC-doublecheck"
 
 Once you have a base folder and file path established, follow the steps below to create files for NZ processing of OCLC BIB processing report data. It is important that the entire process be done within the shortest timeframe possible. 
 
@@ -17,37 +19,21 @@ Once you have a base folder and file path established, follow the steps below to
 
 <b>Step2.</b> 
 
-* Run Script1.  
+* Run Script1 - OCLC-IZ Comparison File
 
-* Use the MMS IDs in the ‘DIFF’ sheet of the file comparison_fileIZ produced by the script to filter your Alma Analytic 
+This will extract the records that need to be reviewed and updated and create a spreadsheet with two tabs:
+1. DIFF - Use the MMS IDs from this sheet to filter the Alma Analytic 
+2. SAME - No action is needed on these records
 
-* Export the filtered analytic and save in base folder. Name the file OCLC-doublecheck.xlsx 
+* Export the filtered analytic as an Excel sheet and save in base folder. Name the file "OCLC-doublecheck.xlsx"
 
 <b>Step3.</b> 
 
-* Run Script2.
+* Run Script2 - OCLC-NZ Comparison File
 
-* Review DIFF, a_to_z, and no_a_to_z sheets in the file "comparison_fileNZ" that was produced by the scripts. 
+This will create a new Excel file in your base folder "comparison_fileNZ"
+It compares the DIFF tab of the OCLC-IZ comparison file to OCLC-doublecheck.xlsx" and "Do_not_change.xlsx"
+This provides current data to avoid duplication in 035z
+The file comparison_fileNZ can be used to review and update OCLC numbers in Alma.
 
-* The ‘DIFF’ sheet shows all records where the OCLC Control Number (035a) is different than the 035 $a 
 
-    * Use it to locate and correct any records with two OCLC numbers in the 035a (filter using contains”;”) 
-
-* The a_to_z sheet shows all the records where the OCLC Control Number (035a) is different than the OCLC Control Number (035z) 
-
-    * Review for instances where there are multiple 035z in the record (filter using contains”;”). To avoid duplication in the 035z, these need to be manually removed from the a_to_z sheet if one of the OCLC Control Number (035z) match the OCLC Control Number (035a). 
-
-* The no_a_to_z sheet shows all the records where the incoming 035 $a is the same as the existing OCLC Control Number (035z)
-   * Review these records using Connexion. They may indicate a false match in OCLC's algorithm and be records that need no changes made. If this is the case, remove them from the 'DIFF' sheet before moving on to step4.
-
-<b>Step4.</b>
-
-* Create two files to send to NZ for processing. 
-
-1. Create a text file with the header MMS ID that contains the column of Network ID numbers from the a_to_z tab. Name the file InstitutionName_a_to_z.txt 
-
-    * This file will be used to move OCLC Control Number (035a) to OCLC Control Number (035z) in Network Zone records 
-
-2. Create an Excel file that contains two columns from the DIFF tab: 001 and 035 $a. Name the file InstitutionName_035a_import. 
-
-    * This file will be used to import/overlay OCLC Control Number (035a) in Network Zone records 
