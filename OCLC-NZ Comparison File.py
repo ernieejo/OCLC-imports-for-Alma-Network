@@ -1,7 +1,7 @@
 import pandas as pd
 from pandas import DataFrame, merge, ExcelWriter
 #Read the Alma Analytics output
-AlmaExport = pd.read_excel('C://Users//Carbin XI//Documents//OCLC Import Script//OCLC-doublecheck.xlsx', dtype=str)
+AlmaExport = pd.read_excel('C://...OCLC Import Script//OCLC-doublecheck.xlsx', dtype=str)
 AlmaExport.columns =["MMS_IZ","OCLC Control Number (035a)","OCLC Control Number (035z)","001"]
 
 #make a dataframe from the Alma Analytic
@@ -9,11 +9,11 @@ df1 = pd.DataFrame(AlmaExport, columns= ['MMS_IZ','OCLC Control Number (035a)','
 print(df1)
 
 #Read the DIFF tab of the comparison_IZ file created with script1
-IZ_import = pd.read_excel('C://Users//Carbin XI//Documents//OCLC Import Script//comparison_fileIZ.xlsx', sheet_name='DIFF', dtype=str)
+IZ_import = pd.read_excel('C://...OCLC Import Script//comparison_fileIZ.xlsx', sheet_name='DIFF', dtype=str)
 IZ_import.columns = ["a", "MMS_IZ", "Existing OCLC number", "035 $a","action"]
 
 #Dataframe for do not change list 
-values =  pd.read_excel('C://Users//Carbin XI//Documents//OCLC Import Script//Do_not_change.xlsx', sheet_name='Do_not_change', dtype=str)
+values =  pd.read_excel('C://...OCLC Import Script//Do_not_change.xlsx', sheet_name='Do_not_change', dtype=str)
 values.columns = ["MMS_IZ"]
 values_df = pd.DataFrame(values, columns = ['MMS_IZ'])
 values_df['MMS_IZ']= values_df['MMS_IZ'].astype(str)
@@ -41,7 +41,7 @@ print(diff)
 print(Review)
 
 #Create the comparison_fileNZ file
-writer = pd.ExcelWriter('C://Users//Carbin XI//Documents//OCLC Import Script//comparison_fileNZ.xlsx', engine='xlsxwriter')
+writer = pd.ExcelWriter('C://...OCLC Import Script//comparison_fileNZ.xlsx', engine='xlsxwriter')
 do_not_change.to_excel(writer, sheet_name='do_not_change')
 diff.to_excel(writer, sheet_name='diff')
 Review.to_excel(writer, sheet_name='duplication in 035a-035z')
