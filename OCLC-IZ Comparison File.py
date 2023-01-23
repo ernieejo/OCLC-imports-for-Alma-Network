@@ -4,7 +4,7 @@ import csv
 import xlsxwriter
 
 #Read the BIB processing report
-data = pd.read_csv('C://Users//Carbin XI//Documents//OCLC Import Script//BIB_processing_report.txt', sep="|", header=None, dtype=str)
+data = pd.read_csv('C://.../BIB_processing_report.txt', sep="|", header=None, dtype=str)
 data.columns = ["a", "b", "c", "d", "e"]
 
 #make a dataframe from the BIB processing report and set the format as text for columns b and c
@@ -18,7 +18,7 @@ print(DIFF)
 print(SAME)
 
 #Create the comparison_fileIZ file
-writer = pd.ExcelWriter('C://Users//Carbin XI//Documents//OCLC Import Script//comparison_fileIZ.xlsx', engine='xlsxwriter')
+writer = pd.ExcelWriter('C://...OCLC Import Script//comparison_fileIZ.xlsx', engine='xlsxwriter')
 DIFF.to_excel(writer, index=False, sheet_name='DIFF')
 SAME.to_excel(writer, index=False, sheet_name='SAME')
 workbook = writer.book
