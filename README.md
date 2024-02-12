@@ -5,13 +5,11 @@ Use these scripts to prepare spreadsheets that can be reviewed to create files f
 
 * You need to create a base folder where the scripts and the files they create will be stored.
 
-* Add a blank Excel file called "Do_not_change.xlsx" to the base folder. In reviewing the OCLC numbers, there are situations where its best to ignore certain records. The do not change file can be used to list MMS IDs for records that you want the script to ignore.
-
-* You need to change the file paths within Script 1 and Script 2 so that they point to the folder you’ve created. Leave the file name that they point to within that folder as is.  
+* You need to change the file paths in the script so that they point to the folder you’ve created. 
 
 * Create an Alma Analytics with the following subjects in this order: MMS ID, OCLC Control Number (035a), OCLC Control Number (035z), Network ID. Save the Analytic as "OCLC-doublecheck"
 
-Once you have a base folder and file path established, follow the steps below to create files for NZ processing of OCLC BIB processing report data. It is important that the entire process be done within the shortest timeframe possible. 
+Once you have a base folder and file path established, follow the steps below to create a review spreadsheet for the OCLC BIB processing report data. It is important that the entire process be done within the shortest timeframe possible. For example if the institution's records are published to OCLC on a weekly bases, the reports produced should be processed weekly.
 
 <b>Step1.</b> 
 
@@ -25,15 +23,8 @@ This will extract the records that need to be reviewed and updated and create a 
 1. DIFF - Use the MMS IDs from this sheet to filter the Alma Analytic 
 2. SAME - No action is needed on these records
 
-* Export the filtered analytic as an Excel sheet and save in base folder. Name the file "OCLC-doublecheck.xlsx"
+* To grab Network IDs for items, you can use OCLC-doublecheck Alma Analytic. This analytic can also help you to determine if the record has already been updated and where there are existing 035a fields that need to be moved to the 035z.
+* Review the records listed in the DIFF tab of the spreadsheet output to determine what changes (if any) should be made to the bibliographic record in Alma.
 
-<b>Step3.</b> 
-
-* Run Script2 - OCLC-NZ Comparison File
-
-This will create a new Excel file in your base folder "comparison_fileNZ"
-It compares the DIFF tab of the OCLC-IZ comparison file to OCLC-doublecheck.xlsx" and "Do_not_change.xlsx"
-This provides current data to avoid duplication in 035z
-The file comparison_fileNZ can be used to review and update OCLC numbers in Alma.
 
 
