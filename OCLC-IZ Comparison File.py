@@ -2,7 +2,7 @@ import pandas as pd
 from pandas import DataFrame, ExcelWriter
 import csv
 
-#Read the BIB processing report
+#Read the BIB processing report. Add the filepath to the txt file
 data = pd.read_csv('BibProcessingReport.txt', sep="|", header=None, dtype=str)
 data.columns = ["JobID", "MMSID", "Existing 035a", "Incoming 035a", "Action"]
 
@@ -17,7 +17,7 @@ SAME = df[df['Existing 035a'] == df['Incoming 035a']]
 print(DIFF)
 print(SAME)
 
-#Create the comparison_fileIZ file
+#Create the comparison_fileIZ file. Add the file path to the Excel file
 writer = pd.ExcelWriter('comparison_file.xlsx', engine='xlsxwriter')
 DIFF.to_excel(writer, index=False, sheet_name='DIFF')
 SAME.to_excel(writer, index=False, sheet_name='SAME')
