@@ -1,15 +1,20 @@
 # OCLC-imports-for-Alma-Network
-OCLC BIB processing report – Script Instructions 
+This is a series of Python scripts that can be used to sort the OCLC BIB processing report and create files for making bulk changes to the OCLC identifier in Alma records.
 
-Use these scripts to prepare spreadsheets that can be reviewed to create files for updating and maintaining OCLC numbers in Alma. Prior to running these scripts, some one-time setup is needed.  
+Prior to running these scripts, some one-time setup is needed.  
 
 * You need to create a base folder where the scripts and the files they create will be stored.
 
-* You need to change the file paths in the script so that they point to the folder you’ve created. 
+* You may need to install the Pandas Python library
 
 * Create an Alma Analytics with the following subjects in this order: MMS ID, OCLC Control Number (035a), OCLC Control Number (035z), Network ID. Save the Analytic as "OCLC-doublecheck"
 
-Once you have a base folder and file path established, follow the steps below to create a review spreadsheet for the OCLC BIB processing report data. It is important that the entire process be done within the shortest timeframe possible. For example if the institution's records are published to OCLC on a weekly bases, the reports produced should be processed weekly.
+  Tools Used:
+  * OCLC WorldShare Manager
+  * Alma Analytics
+  * Python Scripts
+  * NZ Alma (when bulk updates are needed)
+
 
 <b>Step1.</b> 
 
@@ -19,12 +24,35 @@ Once you have a base folder and file path established, follow the steps below to
 
 * Run Script1 - OCLC-IZ Comparison File
 
-This will extract the records that need to be reviewed and updated and create a spreadsheet with two tabs:
-1. DIFF - Use the MMS IDs from this sheet to filter the Alma Analytic 
-2. SAME - No action is needed on these records
+This script separates BibProcessingReport.txt into two tabs in an Excel file, DIFF and SAME.​ 
+* DIFF – Incoming OCLC identifier differs from what's in our system.​
+* SAME – Incoming OCLC identifier is the same as what's in our system.​
 
-* To grab Network IDs for items, you can use OCLC-doublecheck Alma Analytic. This analytic can also help you to determine if the record has already been updated and where there are existing 035a fields that need to be moved to the 035z.
-* Review the records listed in the DIFF tab of the spreadsheet output to determine what changes (if any) should be made to the bibliographic record in Alma.
+1. Copy MMS ID's from the 'DIFF' tab and use them to filter the analytic 'OCLC-doublecheck'​​
+2. Export the results as an Excel file and add to base file folder
+
+<b>Step3.</b> 
+
+* Run Script2 - OCLC-NZ Comparison File
+
+This script combines the output from Script 1 with current information from an Alma Analytic​
+* Moves any records already updated to the update tab​
+* Moves any items on the do not change list to do_not_change tab
+
+Review the 'diff' tab​ - Often this is done manually. 
+If bulk updates are needed, ensure this tab contains only rows that represent the records you want to update
+
+<b>Step4. (Bulk updates only)</b> 
+
+* Run Script3 - Files_for_NZ_Import
+  
+This script creates two files that are used to complete a bulk import of OCLC identifiers in NZ records.​
+* Text file (Creat a set in Alma, then run the OCLC a_to_z normalization process on the set)
+
+* Excel file (Use this Excel file and an NZ import profile to import the OCLC identifiers into NZ records)
+
+
+
 
 
 
