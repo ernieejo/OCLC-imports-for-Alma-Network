@@ -38,6 +38,7 @@ This script separates BibProcessingReport.txt into two tabs in an Excel file, DI
 This script combines the output from Script 1 with current information from an Alma Analytic​
 * Moves any records already updated to the update tab​
 * Moves any items on the do not change list to do_not_change tab
+* Uses the do_not_change Excel file. Add MMS ID's for records that you want to ignore when analyzing BIB_processings_report.txt
 
 Review the 'diff' tab​ - Often this is done manually. 
 If bulk updates are needed, ensure this tab contains only rows that represent the records you want to update
