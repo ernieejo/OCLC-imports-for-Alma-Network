@@ -18,7 +18,7 @@ print(DIFF)
 print(SAME)
 
 #Create the comparison_fileIZ file. Add the file path to the Excel file
-writer = pd.ExcelWriter('comparison_file.xlsx', engine='xlsxwriter')
+writer = pd.ExcelWriter('comparison_file_IZ.xlsx', engine='xlsxwriter')
 DIFF.to_excel(writer, index=False, sheet_name='DIFF')
 SAME.to_excel(writer, index=False, sheet_name='SAME')
 workbook = writer.book
@@ -26,7 +26,6 @@ worksheet = writer.sheets['DIFF']
 text_fmt = workbook.add_format({'num_format': '@'})
 worksheet.set_column('B:B',20, text_fmt)
 writer.save()
-
 
 
 
