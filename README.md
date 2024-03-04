@@ -48,7 +48,7 @@ If bulk updates are needed, ensure this tab contains only rows that represent th
 * Run Script3 - Files_for_NZ_Import
   
 This script creates two files that are used to complete a bulk import of OCLC identifiers in NZ records.​
-* Text file (Creat a set in Alma, then run the OCLC a_to_z normalization process on the set)
+* Text file (Create a set in Alma, then run the OCLC a_to_z normalization process on the set)
 
 * Excel file (Use this Excel file and an NZ import profile to import the OCLC identifiers into NZ records)
 
